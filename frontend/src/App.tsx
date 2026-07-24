@@ -64,8 +64,7 @@ function App() {
           <p className="eyebrow">Customer Support AI</p>
           <h1>Ticket triage + draft reply in one dashboard</h1>
           <p className="lead">
-            고객이 남긴 문의를 받으면 백엔드가 OpenAI 또는 Gemini를 호출해 카테고리와
-            심각도를 분류하고, 바로 보낼 수 있는 답장 초안을 만듭니다.
+            When a customer inquiry is received, the backend calls OpenAI or Gemini to classify category and serverity, then generates an email draft reply.
           </p>
 
           <div className="hero-stats">
@@ -99,7 +98,7 @@ function App() {
           <div className="panel-header">
             <div>
               <p className="eyebrow">Customer input</p>
-              <h2>문의 내용을 입력하세요</h2>
+              <h2>Enter Inquiry Details</h2>
             </div>
             <button type="submit" className="primary-button" disabled={loading}>
               {loading ? 'Analyzing...' : 'Run triage'}
@@ -150,7 +149,7 @@ function App() {
           <div className="panel-header">
             <div>
               <p className="eyebrow">AI output</p>
-              <h2>자동 분류 결과</h2>
+              <h2>Automated Classification Result</h2>
             </div>
             <span className="mini-note">Updates live after submit</span>
           </div>
