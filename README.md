@@ -1,8 +1,13 @@
-# Customer Support AI Triage
+# 🤖 Customer Support AI Triage
 
-![Customer Support AI Dashboard](./frontend/public/dashboard-demo.png)
+[![Live Demo](https://img.shields.io/badge/Live_Demo-Vercel-black?style=for-the-badge&logo=vercel)](https://ai-support-triage-one.vercel.app/)
+[![Backend](https://img.shields.io/badge/Backend-Render-informational?style=for-the-badge&logo=render)](https://customer-support-triage.onrender.com)
+
+> 🚀 **Live Demo:** [https://ai-support-triage-one.vercel.app/](https://ai-support-triage-one.vercel.app/)
 
 An intelligent support ticket classifier that uses AI to automatically categorize issues and generate draft responses. Built with React, Express, and AI APIs to demonstrate rapid full-stack development.
+
+![Customer Support AI Dashboard](./frontend/public/dashboard-demo.png)
 
 ## Why This Project
 
@@ -159,13 +164,13 @@ AI_PROVIDER=openai
 
 ## Roadmap
 
- - Ticket persistence (PostgreSQL)
- - Agent authentication and audit logs
- - Ticket history and analytics dashboard
- - Multi-language support
- - Custom triage rules engine
- - Production deployment (Vercel + Render)
- - Fine-tuned model option for higher accuracy
+- [ ] Ticket persistence (PostgreSQL)
+- [ ] Agent authentication and audit logs
+- [ ] Ticket history and analytics dashboard
+- [ ] Multi-language support
+- [ ] Custom triage rules engine
+- [x] Production deployment (Vercel + Render)
+- [ ] Fine-tuned model option for higher accuracy
 
 ## Performance & Cost Notes
 
