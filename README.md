@@ -1,5 +1,7 @@
 # Customer Support AI Triage
 
+![Customer Support AI Dashboard](./frontend/public/dashboard-demo.png)
+
 An intelligent support ticket classifier that uses AI to automatically categorize issues and generate draft responses. Built with React, Express, and AI APIs to demonstrate rapid full-stack development.
 
 ## Why This Project
