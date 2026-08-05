@@ -151,7 +151,8 @@ async function callGemini(input: TicketInput): Promise<TriageResult> {
   }
 
   try {
-    const model = process.env.GEMINI_MODEL || DEFAULT_GEMINI_MODEL
+    const rawModel = process.env.GEMINI_MODEL || DEFAULT_GEMINI_MODEL
+    const model = rawModel.startsWith('models/') ? rawModel.replace('models/', '') : rawModel
     const response = await fetch(
         `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`,
         {
@@ -175,7 +176,8 @@ async function callGemini(input: TicketInput): Promise<TriageResult> {
     )
 
     if (!response.ok) {
-        throw new Error(`Gemini API responded with status ${response.status}`)
+      const errorBody = await response.text()
+      throw new Error(`Gemini API responded with status ${response.status}: ${errorBody}`)
     }
 
     const payload = (await response.json()) as {
