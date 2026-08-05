@@ -155,7 +155,7 @@ async function callGemini(input: TicketInput): Promise<TriageResult> {
     const model = rawModel.replace(/^models\//, '').trim()
 
     const response = await fetch(
-        `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`,
+        `https://generativelanguage.googleapis.com/v1beta/${model}:generateContent?key=${apiKey}`,
         {
             method: 'POST',
             headers: {
