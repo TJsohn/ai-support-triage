@@ -13,8 +13,10 @@ export interface TicketRequest {
   message: string
 }
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || ''
+
 export async function submitTicket(payload: TicketRequest): Promise<TriageResponse> {
-  const response = await fetch('/api/triage', {
+  const response = await fetch(`${API_BASE_URL}/api/triage`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -24,7 +26,7 @@ export async function submitTicket(payload: TicketRequest): Promise<TriageRespon
 
   if (!response.ok) {
     const errorPayload = (await response.json().catch(() => null)) as { message?: string } | null
-    throw new Error(errorPayload?.message || '문의 분석에 실패했습니다.')
+    throw new Error(errorPayload?.message || 'Failed to analyze the inquiry.')
   }
 
   return (await response.json()) as TriageResponse
