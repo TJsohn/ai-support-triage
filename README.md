@@ -16,7 +16,7 @@ It's a practical demonstration of:
 ## How It Works
 
 1. **Customer Input** — A support agent pastes a customer message into the React dashboard
-2. **AI Processing** — The Express backend sends the message to OpenAI or Gemini
+2. **AI Processing** — The Express backend sends the message to Gemini (or OpenAI)
 3. **Structured Output** — The AI returns:
    - Category (e.g., "Account Access", "Billing", "Technical Issue")
    - Severity (low, medium, high, critical)
@@ -34,11 +34,11 @@ It's a practical demonstration of:
 **Backend**
 - Express.js on Node.js
 - TypeScript for maintainability
-- Pluggable AI provider abstraction (OpenAI, Gemini)
+- Pluggable AI provider abstraction (Gemini, OpenAI)
 
 **AI**
-- OpenAI API (default: `gpt-4o-mini` for cost-efficiency)
-- Gemini API (optional swap-in)
+- Google Gemini API (default: `gemini-1.5-flash` for high speed & zero-cost free tier)
+- OpenAI API (supported via pluggable provider architecture)
 - Structured JSON responses for reliable parsing
 
 ## Development Approach
@@ -71,13 +71,12 @@ customer-support-ai/
 │   └── package.json
 ├── db/                        # Database layer (reserved)
 └── README.md
-```
 
 ## Quick Start
 
 ### Prerequisites
 - Node.js 18+
-- OpenAI API key (or Gemini API key)
+- Gemini API key (Free key from Google AI Studio)
 
 ### Backend
 
@@ -87,7 +86,7 @@ npm install
 
 # Create .env from .env.example
 cp .env.example .env
-# Add your OPENAI_API_KEY to .env
+# Add your GEMINI_API_KEY to .env
 
 npm run dev
 # Server runs on http://localhost:3001
@@ -118,7 +117,7 @@ Customer: "I can't log in to my account and I need access right now."
   "severity": "high",
   "summary": "Customer unable to authenticate; urgent access required.",
   "draftEmail": "Hello,\n\nThank you for reaching out. We understand how frustrating login issues can be. Our team is looking into this immediately.\n\nIn the meantime, try resetting your password...",
-  "provider": "openai"
+  "provider": "gemini"
 }
 ```
 
@@ -134,18 +133,20 @@ Customer: "I can't log in to my account and I need access right now."
 
 ```bash
 PORT=3001
-AI_PROVIDER=openai
-OPENAI_API_KEY=sk-...
-OPENAI_MODEL=gpt-4o-mini
-GEMINI_API_KEY=
+AI_PROVIDER=gemini
+GEMINI_API_KEY=your_gemini_api_key_here
 GEMINI_MODEL=gemini-1.5-flash
+
+# Optional: OpenAI setup
+# OPENAI_API_KEY=sk-...
+# OPENAI_MODEL=gpt-4o-mini
 ```
 
 ### Switch providers without code changes
 
 ```bash
-# Use Gemini instead
-AI_PROVIDER=gemini
+# Switch to OpenAI if needed
+AI_PROVIDER=openai
 ```
 
 ## Key Features 
@@ -163,14 +164,14 @@ AI_PROVIDER=gemini
  - Ticket history and analytics dashboard
  - Multi-language support
  - Custom triage rules engine
- - Deployment (Vercel + Cloud Run / Railway)
+ - Production deployment (Vercel + Render)
  - Fine-tuned model option for higher accuracy
 
 ## Performance & Cost Notes
 
-- Model selection: gpt-4o-mini chosen for cost-efficiency (~$0.15 / 1M input tokens) while maintaining quality
-- Response time: ~1-2 seconds per triage (including API latency)
-- Estimated cost: ~$0.001 per ticket with default model
+- Model selection: gemini-1.5-flash chosen for ultra-fast response times (~1s) and high cost-efficiency leveraging Google AI Studio's free tier.
+- Response time: ~1 second per triage (including API latency)
+- Estimated cost: $0.00 / ticket using Gemini Free Tier (with plug-and-play fallback to OpenAI)
 
 ## What This Demonstrates
 
