@@ -1,8 +1,8 @@
 import cors from 'cors'
 import dotenv from 'dotenv'
 import express from 'express'
-import { triageTicket } from './triage'
-import type { TicketInput } from './types'
+import { triageTicket } from './triage.js'
+import type { TicketInput } from './types.js'
 
 dotenv.config()
 
