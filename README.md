@@ -42,7 +42,7 @@ It's a practical demonstration of:
 - Pluggable AI provider abstraction (Gemini, OpenAI)
 
 **AI**
-- Google Gemini API (default: `gemini-1.5-flash` for high speed & zero-cost free tier)
+- Google Gemini API (default: `gemini-3.5-flash-lite`)
 - OpenAI API (supported via pluggable provider architecture)
 - Structured JSON responses for reliable parsing
 
@@ -140,7 +140,7 @@ Customer: "I can't log in to my account and I need access right now."
 PORT=3001
 AI_PROVIDER=gemini
 GEMINI_API_KEY=your_gemini_api_key_here
-GEMINI_MODEL=gemini-1.5-flash
+GEMINI_MODEL=gemini-3.5-flash-lite
 
 # Optional: OpenAI setup
 # OPENAI_API_KEY=sk-...
@@ -174,9 +174,10 @@ AI_PROVIDER=openai
 
 ## Performance & Cost Notes
 
-- Model selection: gemini-1.5-flash chosen for ultra-fast response times (~1s) and high cost-efficiency leveraging Google AI Studio's free tier.
-- Response time: ~1 second per triage (including API latency)
-- Estimated cost: $0.00 / ticket using Gemini Free Tier (with plug-and-play fallback to OpenAI)
+- Model selection: `gemini-3.5-flash-lite` is used as the default model for lightweight AI-powered ticket classification and response generation.
+- API usage and response times depend on the provider, model availability, and applicable usage limits.
+- The backend supports switching between Gemini and OpenAI through environment configuration.
+- The Render free instance may spin down after inactivity, which can increase the initial response time.
 
 ## What This Demonstrates
 
