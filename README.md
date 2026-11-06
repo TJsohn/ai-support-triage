@@ -21,7 +21,7 @@ It's a practical demonstration of:
 ## How It Works
 
 1. **Customer Input** — A support agent pastes a customer message into the React dashboard
-2. **AI Processing** — The Express backend sends the message to Gemini (or OpenAI)
+2. **AI Processing** — The Express backend sends the message to the Google Gemini API.
 3. **Structured Output** — The AI returns:
    - Category (e.g., "Account Access", "Billing", "Technical Issue")
    - Severity (low, medium, high, critical)
@@ -39,11 +39,11 @@ It's a practical demonstration of:
 **Backend**
 - Express.js on Node.js
 - TypeScript for maintainability
-- Pluggable AI provider abstraction (Gemini, OpenAI)
+- AI provider integration with Gemini and additional OpenAI support
 
 **AI**
-- Google Gemini API (default: `gemini-3.5-flash-lite`)
-- OpenAI API (supported via pluggable provider architecture)
+- Google Gemini API (tested: default provider)
+- OpenAI API (additional provider integration)
 - Structured JSON responses for reliable parsing
 
 ## Development Approach
@@ -76,7 +76,7 @@ customer-support-ai/
 │   └── package.json
 ├── db/                        # Database layer (reserved)
 └── README.md
-
+```
 ## Quick Start
 
 ### Prerequisites
